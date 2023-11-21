@@ -5,6 +5,19 @@
             <nav class="nav">
                 <ul class="nav__list list-reset flex">
                     <li class="nav__item">
+                        <form method="get" action="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">
+                            <label for="valuteID">ID</label>
+                            <input type="text" name="valuteID" id="valuteID" required>
+                            <label for="dateFrom">От</label>
+                            <input type="date" name="dateFrom" id="dateFrom" class="date__input" required>
+                            <label for="dateTo">До</label>
+                            <input type="date" name="dateTo" id="dateTo" class="date__input" required>
+                            <button>
+                                Смотреть
+                            </button>
+                        </form>
+                    </li>
+                    <li class="nav__item">
                         <form method="post" action="{{ route(\App\Http\Controllers\Api\CurrencyController::ROUTE_PARSE_CURRENCY) }}">
                             <button class="nav__link btn-reset">
                                 Спарсить данные
@@ -36,7 +49,12 @@
                     <th class="table__borders">value</th>
                     <th class="table__borders">date</th>
                 </tr>
-                @include('layouts.columns')
+                @foreach($arCurrency as $value)
+                    @include('layouts.columns', ['currency' => $value])
+                @endforeach
             </table>
+            @if(!empty($_GET['valuteID']))
+                <a class="nav__link" href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">Очистить</a>
+            @endif
         </div>
 @endsection

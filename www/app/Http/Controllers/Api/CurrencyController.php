@@ -15,6 +15,10 @@ class CurrencyController extends Controller
     /** @var string  */
     const ROUTE_DELETE_ALL = 'api.deleteAll';
 
+    /**
+     * Парс данных
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function parseCurrency () {
         for ($i = 0; $i < 30; $i++ ) {
             $date = new \DateTime(); // For today/now, don't pass an arg.
@@ -43,6 +47,10 @@ class CurrencyController extends Controller
 
     }
 
+    /**
+     * Очистка таблицы currency
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteAll ()
     {
         $obCurrency = new Currency();

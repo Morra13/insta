@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -20,9 +21,20 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index ()
+    public function index (Request $request)
     {
-        return view('index');
+        $obCurrency = new Currency();
+
+        $arCurrency = $obCurrency->getLastDateCurrency();
+
+        if (!empty($request->get('valuteID'))) {
+            $arCurrency = $obCurrency->getCurrencyById($request);
+        }
+
+        return view('index',
+        [
+            'arCurrency' => $arCurrency,
+        ]);
     }
 
     /**

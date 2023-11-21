@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 /**
  * Class Currency
@@ -37,4 +38,32 @@ class Currency extends Model
      * @var string
      */
     protected $table = self::TABLE;
+
+    /**
+     * Получение последних курсов
+     * @return mixed
+     */
+    public function getLastDateCurrency ()
+    {
+        $lastDate = (new Currency())->get()->max('date');
+        return (new Currency())
+            ->where('date', $lastDate)
+            ->get()
+            ->all()
+        ;
+    }
+
+    /**
+     * Получение курсов по id и по датам
+     * @param Request $request
+     * @return mixed
+     */
+    public function getCurrencyById (Request $request) {
+        return (new Currency())
+            ->where('valuteID', $request->get('valuteID'))
+            ->whereBetween('date', [$request->get('dateFrom'), $request->get('dateTo')])
+            ->get()
+            ->all()
+        ;
+    }
 }
