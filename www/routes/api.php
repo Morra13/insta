@@ -25,4 +25,5 @@ Route::post('/register',    [RegisterController::class, 'register']     )->name(
 Route::post('/auth',        [AuthController::class, 'auth']             )->name(AuthController::ROUTE_AUTH);
 Route::get('/logout',       [AuthController::class, 'logout']           )->name(AuthController::ROUTE_LOGOUT);
 
-Route::post('/getCurrency', [CurrencyController::class, 'getCurrency']  )->name(CurrencyController::ROUTE_GET_CURRENCY);
+Route::post('/parseCurrency',   [CurrencyController::class, 'parseCurrency']    )->name(CurrencyController::ROUTE_PARSE_CURRENCY);
+Route::post('/deleteAll',       [CurrencyController::class, 'deleteAll']        )->name(CurrencyController::ROUTE_DELETE_ALL);

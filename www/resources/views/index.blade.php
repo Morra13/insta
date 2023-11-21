@@ -5,6 +5,20 @@
             <nav class="nav">
                 <ul class="nav__list list-reset flex">
                     <li class="nav__item">
+                        <form method="post" action="{{ route(\App\Http\Controllers\Api\CurrencyController::ROUTE_PARSE_CURRENCY) }}">
+                            <button class="nav__link btn-reset">
+                                Спарсить данные
+                            </button>
+                        </form>
+                    </li>
+                    <li class="nav__item">
+                        <form method="post" action="{{ route(\App\Http\Controllers\Api\CurrencyController::ROUTE_DELETE_ALL) }}">
+                            <button class="nav__link btn-reset">
+                                Удалить данные
+                            </button>
+                        </form>
+                    </li>
+                    <li class="nav__item">
                         <a href="{{ route(\App\Http\Controllers\Auth\AuthController::ROUTE_LOGOUT) }}" class="nav__link">
                             Выход
                         </a>
