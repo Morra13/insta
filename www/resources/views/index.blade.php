@@ -40,6 +40,16 @@
             </nav>
         </div>
         <div class="container">
+            <div>
+                <form method="get" action="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">
+                    <label for="date">Курсы за дату</label>
+                    <input type="date" name="date" id="date" value="{{ $date }}">
+                    <button>
+                        Смотреть
+                    </button>
+                    <br><br>
+                </form>
+            </div>
             <table class="table">
                 <tr>
                     <th class="table__borders">valuteID</th>
@@ -53,8 +63,10 @@
                     @include('layouts.columns', ['currency' => $value])
                 @endforeach
             </table>
-            @if(!empty($_GET['valuteID']))
+            <br>
+            @if(!empty($_GET['valuteID']) || !empty($_GET['date']))
                 <a class="nav__link" href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">Очистить</a>
             @endif
+            <br><br>
         </div>
 @endsection

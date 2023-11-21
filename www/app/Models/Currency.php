@@ -40,14 +40,14 @@ class Currency extends Model
     protected $table = self::TABLE;
 
     /**
-     * Получение последних курсов
+     *  Получение курсов по дате
+     * @param $date
      * @return mixed
      */
-    public function getLastDateCurrency ()
+    public function getCurrencyByDate ($date)
     {
-        $lastDate = (new Currency())->get()->max('date');
         return (new Currency())
-            ->where('date', $lastDate)
+            ->where('date', $date)
             ->get()
             ->all()
         ;

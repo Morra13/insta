@@ -25,7 +25,9 @@ class PublicController extends Controller
     {
         $obCurrency = new Currency();
 
-        $arCurrency = $obCurrency->getLastDateCurrency();
+        $date = (!empty($request->get('date'))) ? ($request->get('date')) : (new Currency())->get()->max('date');
+
+        $arCurrency = $obCurrency->getCurrencyByDate($date);
 
         if (!empty($request->get('valuteID'))) {
             $arCurrency = $obCurrency->getCurrencyById($request);
@@ -34,6 +36,7 @@ class PublicController extends Controller
         return view('index',
         [
             'arCurrency' => $arCurrency,
+            'date' => $date,
         ]);
     }
 
