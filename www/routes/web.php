@@ -13,12 +13,6 @@ use App\Http\Controllers\PublicController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//Route::group(
-//    ['middleware' => 'auth'],
-//    function () {
-        Route::get('/', [PublicController::class, 'index'])->name(PublicController::ROUTE_INDEX);
-//    }
-//);
-Route::get('/auth',     [PublicController::class, 'auth'])      ->name(PublicController::ROUTE_AUTH);
-Route::get('/register', [PublicController::class, 'register'])  ->name(PublicController::ROUTE_REGISTER);
+Route::get('/',         [PublicController::class, 'index']      )->name(PublicController::ROUTE_INDEX)->middleware('auth');
+Route::get('/auth',     [PublicController::class, 'auth']       )->name(PublicController::ROUTE_AUTH);
+Route::get('/register', [PublicController::class, 'register']   )->name(PublicController::ROUTE_REGISTER);
