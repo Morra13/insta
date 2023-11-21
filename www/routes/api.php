@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CurrencyController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/register',    [RegisterController::class, 'register']     )->name(RegisterController::ROUTE_REGISTER);
+Route::post('/auth',        [AuthController::class, 'auth']             )->name(AuthController::ROUTE_AUTH);
+Route::get('/logout',       [AuthController::class, 'logout']           )->name(AuthController::ROUTE_LOGOUT);
+
+Route::post('/getCurrency', [CurrencyController::class, 'getCurrency']  )->name(CurrencyController::ROUTE_GET_CURRENCY);
