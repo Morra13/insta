@@ -6,14 +6,14 @@
                 <ul class="nav__list list-reset flex">
                     <li class="nav__item">
                         <form method="post" action="{{ route(\App\Http\Controllers\Api\CurrencyController::ROUTE_PARSE_CURRENCY) }}">
-                            <button class="nav__link btn-reset">
+                            <button class="nav__link btn-reset" disabled>
                                 Спарсить данные
                             </button>
                         </form>
                     </li>
                     <li class="nav__item">
                         <form method="post" action="{{ route(\App\Http\Controllers\Api\CurrencyController::ROUTE_DELETE_ALL) }}">
-                            <button class="nav__link btn-reset">
+                            <button class="nav__link btn-reset" disabled>
                                 Удалить данные
                             </button>
                         </form>
