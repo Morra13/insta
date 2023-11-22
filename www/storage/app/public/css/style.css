@@ -80,6 +80,7 @@ a {
     margin-bottom: 43px;
     padding-top: 15px;
     padding-bottom: 15px;
+    height: 50px;
     align-items: center;
     background-color: var(--color-light);
     border-bottom-left-radius: var(--border-radius-big);
@@ -92,7 +93,7 @@ a {
 }
 
 .nav__item {
-    margin-right: 85px;
+    margin-right: 40px;
 }
 
 .nav__link {
@@ -222,9 +223,38 @@ a {
 }
 
 .table {
+    margin-right: 30px;
     border: 1px solid var(--color-dark);
 }
 
 .table__borders {
     border: 1px solid grey;
+}
+
+.input__date {
+    /*margin-right: 41px;*/
+    height: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: var(--color-light);
+    border-bottom: 1px solid var(--color-dark);
+}
+
+.btn__check {
+    padding: 10px 22px;
+    font-size: 11px;
+}
+
+.input__id {
+    padding: 10px 22px;
+    font-size: 11px;
+    margin: 0;
+    line-height: 11px;
+    border-radius: 10px;
+}
+
+.form__table {
+    flex-direction: column;
+    gap: 15px;
 }

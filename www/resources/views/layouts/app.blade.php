@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, innitial-scale=1.0">
     <title>{{ $title ?? config('app.name', 'title') }}</title>
     <link rel="stylesheet" href="{{asset('storage')}}/css/normalize.css">
-    <link rel="stylesheet" href="{{asset('storage')}}/css/style.css">
+    <link rel="stylesheet" href="{{asset('storage')}}/css/style.css?v={{time()}}">
 </head>
 <body class="page">
 <header class="header">
