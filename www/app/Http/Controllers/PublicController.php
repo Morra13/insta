@@ -25,7 +25,9 @@ class PublicController extends Controller
     {
         $obCurrency = new Currency();
 
-        $date = (!empty($request->get('date'))) ? ($request->get('date')) : (new Currency())->get()->max('date');
+        $dateMin = (new Currency())->get()->min('date');
+        $dateMax = (new Currency())->get()->max('date');
+        $date = (!empty($request->get('date'))) ? ($request->get('date')) : $dateMax;
 
         $arCurrency = $obCurrency->getCurrencyByDate($date);
 
@@ -37,6 +39,8 @@ class PublicController extends Controller
         [
             'arCurrency' => $arCurrency,
             'date' => $date,
+            'dateMin' => $dateMin,
+            'dateMax' => $dateMax,
         ]);
     }
 

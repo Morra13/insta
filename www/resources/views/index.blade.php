@@ -27,25 +27,24 @@
             </nav>
         </div>
         <div class="container">
-            <div>
+            <div class="div__clear">
                 <form method="get" action="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">
                     <label for="date">Курсы за дату</label>
                     <input class="input__date btn-reset" type="date" name="date" id="date" value="{{ $date }}">
                     <button class="btn btn-reset reg__btn_accent btn__check">
                         Смотреть
                     </button>
-                    <br><br>
                 </form>
             </div>
-            <div class="flex">
+            <div class="table__block flex">
                 <table class="table">
-                    <tr>
-                        <th class="table__borders">valuteID</th>
-                        <th class="table__borders">numCode</th>
-                        <th class="table__borders">сharCode</th>
-                        <th class="table__borders">name</th>
-                        <th class="table__borders">value</th>
-                        <th class="table__borders">date</th>
+                    <tr class="table__tr">
+                        <th class="table__th">valuteID</th>
+                        <th class="table__th">numCode</th>
+                        <th class="table__th">сharCode</th>
+                        <th class="table__th">name</th>
+                        <th class="table__th">value</th>
+                        <th class="table__th">date</th>
                     </tr>
                     @foreach($arCurrency as $value)
                         @include('layouts.columns', ['currency' => $value])
@@ -55,19 +54,19 @@
                     <label for="valuteID">ID</label>
                     <input type="text" name="valuteID" id="valuteID" class="reg__input input-reset input__id" required>
                     <label for="dateFrom">От</label>
-                    <input type="date" name="dateFrom" id="dateFrom" class="input__date btn-reset" required>
+                    <input type="date" name="dateFrom" id="dateFrom" class="input__date btn-reset" value="{{ $_GET['dateFrom'] ?? $dateMin }}" required>
                     <label for="dateTo">До</label>
-                    <input type="date" name="dateTo" id="dateTo" class="input__date btn-reset" required>
+                    <input type="date" name="dateTo" id="dateTo" class="input__date btn-reset" value="{{ $_GET['dateTo'] ?? $dateMax }}" required>
                     <button class="btn btn-reset reg__btn_accent btn__check">
                         Смотреть
                     </button>
                 </form>
             </div>
 
-            <br>
             @if(!empty($_GET['valuteID']) || !empty($_GET['date']))
-                <a class="nav__link" href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">Очистить</a>
+                <div class="div__clear">
+                    <a class="nav__link" href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}">Очистить</a>
+                </div>
             @endif
-            <br><br>
         </div>
 @endsection

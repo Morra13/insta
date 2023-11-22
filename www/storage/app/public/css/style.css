@@ -224,11 +224,27 @@ a {
 
 .table {
     margin-right: 30px;
-    border: 1px solid var(--color-dark);
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 70%;
 }
 
-.table__borders {
-    border: 1px solid grey;
+.table__th {
+    padding: .5em;
+    text-align: left;
+    font-size: .85em;
+    letter-spacing: .1em;
+}
+
+.table__td {
+    padding: .5em;
+    text-align: left;
+}
+
+.table__tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .2em;
 }
 
 .input__date {
@@ -256,5 +272,13 @@ a {
 
 .form__table {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+}
+
+.table__block {
+    margin-bottom: 25px;
+}
+
+.div__clear {
+    margin-bottom: 25px;
 }
