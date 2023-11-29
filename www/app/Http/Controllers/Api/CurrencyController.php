@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CurrencyResource;
 use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
@@ -14,6 +15,9 @@ class CurrencyController extends Controller
 
     /** @var string  */
     const ROUTE_DELETE_ALL = 'api.deleteAll';
+
+    /** @var string  */
+    const REST_GET_CURRENCY = 'api.getCurrency';
 
     /**
      * Парс данных
@@ -57,5 +61,15 @@ class CurrencyController extends Controller
         $obCurrency::query()->delete();
 
         return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
+    }
+
+    /**
+     * Получение курсов REST API
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getCurrency (Request $request) {
+        return CurrencyResource::collection(Currency::getCurrencyById($request));
     }
 }

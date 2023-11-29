@@ -50,17 +50,30 @@
                         @include('layouts.columns', ['currency' => $value])
                     @endforeach
                 </table>
-                <form method="get" action="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}" class="form__table flex">
-                    <label for="valuteID">ID</label>
-                    <input type="text" name="valuteID" id="valuteID" class="reg__input input-reset input__id" required>
-                    <label for="dateFrom">От</label>
-                    <input type="date" name="dateFrom" id="dateFrom" class="input__date btn-reset" value="{{ $_GET['dateFrom'] ?? $dateMin }}" required>
-                    <label for="dateTo">До</label>
-                    <input type="date" name="dateTo" id="dateTo" class="input__date btn-reset" value="{{ $_GET['dateTo'] ?? $dateMax }}" required>
-                    <button class="btn btn-reset reg__btn_accent btn__check">
-                        Смотреть
-                    </button>
-                </form>
+                <div class="form__wrapper flex">
+                    <form method="get" action="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}" class="form__table flex">
+                        <label for="valuteID">ID</label>
+                        <input type="text" name="valuteID" id="valuteID" class="reg__input input-reset input__id" required>
+                        <label for="dateFrom">От</label>
+                        <input type="date" name="dateFrom" id="dateFrom" class="input__date btn-reset" value="{{ $_GET['dateFrom'] ?? $dateMin }}" required>
+                        <label for="dateTo">До</label>
+                        <input type="date" name="dateTo" id="dateTo" class="input__date btn-reset" value="{{ $_GET['dateTo'] ?? $dateMax }}" required>
+                        <button class="btn btn-reset reg__btn_accent btn__check">
+                            Смотреть
+                        </button>
+                    </form>
+                    <form method="get" action="{{ route(\App\Http\Controllers\Api\CurrencyController::REST_GET_CURRENCY) }}" class="form__table flex">
+                        <label for="valuteID">ID</label>
+                        <input type="text" name="valuteID" id="valuteID" class="reg__input input-reset input__id" required>
+                        <label for="dateFrom">От</label>
+                        <input type="date" name="dateFrom" id="dateFrom" class="input__date btn-reset" value="{{ $_GET['dateFrom'] ?? $dateMin }}" required>
+                        <label for="dateTo">До</label>
+                        <input type="date" name="dateTo" id="dateTo" class="input__date btn-reset" value="{{ $_GET['dateTo'] ?? $dateMax }}" required>
+                        <button class="btn btn-reset reg__btn_accent btn__check">
+                            Получить данные
+                        </button>
+                    </form>
+                </div>
             </div>
 
             @if(!empty($_GET['valuteID']) || !empty($_GET['date']))

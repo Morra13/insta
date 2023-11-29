@@ -27,3 +27,4 @@ Route::get('/logout',       [AuthController::class, 'logout']           )->name(
 
 Route::post('/parseCurrency',   [CurrencyController::class, 'parseCurrency']    )->name(CurrencyController::ROUTE_PARSE_CURRENCY);
 Route::post('/deleteAll',       [CurrencyController::class, 'deleteAll']        )->name(CurrencyController::ROUTE_DELETE_ALL);
+Route::get('/getCurrency',      [CurrencyController::class, 'getCurrency']      )->name(CurrencyController::REST_GET_CURRENCY);
